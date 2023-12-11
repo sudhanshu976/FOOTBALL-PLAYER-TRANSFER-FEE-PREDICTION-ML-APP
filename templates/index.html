@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FOOTBALL PLAYER TRANSFER FEE PREDICTION ML APP</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add FontAwesome CSS for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #007bff;
+            text-align: center;
+            font-size: 2.5em;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        select, input {
+            height: 45px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">ML Prediction App</h1>
+        <form action="/predict" method="post">
+
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="current_value">Current Value:</label>
+                <input type="number" class="form-control" name="current_value" required>
+            </div>
+
+            <div class="form-group">
+                <label for="team">Select Team:</label>
+                <select class="form-control" name="team" required>
+                    {% for team in teams %}
+                        <option value="{{ team['index'] }}">{{ team['label'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="position">Select Position:</label>
+                <select class="form-control" name="position" id="position" required>
+                    <option value="3">Defender Centre-Back</option>
+                    <option value="0">Attack Centre-Forward</option>
+                    <option value="6">Goalkeeper</option>
+                    <option value="9">midfield-CentralMidfield</option>
+                    <option value="10">midfield-DefensiveMidfield</option>
+                    <option value="5">Defender Right-Back</option>
+                    <option value="4">Defender Left-Back</option>
+                    <option value="8">midfield-AttackingMidfield</option>
+                    <option value="2">Attack-RightWinger</option>
+                    <option value="1">Attack-LeftWinger</option>
+                    <option value="7">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="appearance_median">Appearance:</label>
+                <input type="number" class="form-control" name="appearance_median" required>
+            </div>
+
+            <div class="form-group">
+                <label for="minutes_played_boxcox">Minutes Played:</label>
+                <input type="number" class="form-control" name="minutes_played_boxcox" required>
+            </div>
+
+            <div class="form-group">
+                <label for="games_injured_binary">Games Injured:</label>
+                <select class="form-control" name="games_injured_binary" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="award_binary">Award:</label>
+                <select class="form-control" name="award_binary" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <button type="submit">Predict <i class="fas fa-rocket"></i></button>
+        </form>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Add FontAwesome JS for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>

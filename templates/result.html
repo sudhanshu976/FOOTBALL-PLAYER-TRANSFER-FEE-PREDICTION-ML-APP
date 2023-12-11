@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add custom CSS styles -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .container.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1 {
+            color: #007bff;
+            transition: color 0.5s ease;
+        }
+
+        .lead {
+            font-size: 1.5em;
+            color: #28a745;
+            transition: color 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Prediction Result</h1>
+        <p class="lead">The predicted value is: 💲{{ "{:,.2f}".format(prediction) }}</p>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Add class 'show' to container after a delay
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                document.querySelector('.container').classList.add('show');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
